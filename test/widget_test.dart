@@ -13,7 +13,11 @@ import 'package:philosophy_flutter/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(PhilosophyApp(items: List<ListItem>.generate(
+        100,
+            (index) =>
+            SeminarListTile('Seminar $index', 'seminar subtitle $index')),
+    ));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

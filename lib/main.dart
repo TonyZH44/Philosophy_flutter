@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:philosophy_flutter/SeminarPage.dart';
+import 'package:philosophy_flutter/seminar_page.dart';
 
 void main() => runApp(PhilosophyApp(
       items: List<ListItem>.generate(
@@ -10,8 +10,6 @@ void main() => runApp(PhilosophyApp(
 
 class PhilosophyApp extends StatelessWidget {
   const PhilosophyApp({Key? key, required this.items}) : super(key: key);
-
-  final double appBarHeight = 66.0;
 
   final List<ListItem> items;
 
