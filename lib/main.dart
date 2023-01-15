@@ -3,7 +3,7 @@ import 'package:philosophy_flutter/seminar_page.dart';
 
 void main() => runApp(PhilosophyApp(
       items: List<ListItem>.generate(
-          100,
+          1,
           (index) =>
               SeminarListTile('Seminar $index', 'seminar subtitle $index')),
     ));
