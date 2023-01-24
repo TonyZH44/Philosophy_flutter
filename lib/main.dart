@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:philosophy_flutter/seminar_page.dart';
+import 'centered_view/centered_view.dart';
 
 void main() => runApp(PhilosophyApp(
       items: List<ListItem>.generate(
-          1,
+          100,
           (index) =>
               SeminarListTile('Seminar $index', 'seminar subtitle $index')),
-    ));
+));
+
 
 class PhilosophyApp extends StatelessWidget {
+
   const PhilosophyApp({Key? key, required this.items}) : super(key: key);
 
   final List<ListItem> items;
@@ -16,63 +19,118 @@ class PhilosophyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: MyHome()
+    );
+  }
+}
+
+
+class MyHome extends StatelessWidget {
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       home: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              centerTitle: true,
-              title: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text('PhilosophyApp'),
-                ],
-              ),
-              pinned: true,
-              expandedHeight: 100,
-              flexibleSpace: FlexibleSpaceBar(
-                background: Center(
-                    child: Container(
-                  padding: const EdgeInsets.all(20),
-                  color: Colors.green,
-                  alignment: Alignment.bottomCenter,
-                  child: const Text(
-                    'TeacherName',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+        body: SingleChildScrollView(
+          child: CenteredView(
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: const EdgeInsets.only(bottom: 50),
+                  child: const Text('Философия',
+                  style: TextStyle(fontSize: 50),
                   ),
-                )),
+                ),
+              Image.asset('schoolOfAthens.webp'),
+              Container(
+                padding: const EdgeInsets.only(top: 30),
+                child: const Text('''             Филосо́фия (др.-греч. φιλοσοφία, дословно — «любомудрие; любовь к мудрости») — особая форма познания и система знаний об общих характеристиках, понятиях и принципах реальности (бытия), а также бытия человека, об отношении человека и окружающего его мира.
+                К задачам философии на протяжении веков относились как изучение всеобщих законов развития мира и общества, так и изучение самого процесса познания и мышления, а также изучение нравственных категорий и ценностей. К числу предельных философских вопросов относятся, например, вопросы: «Познаваем ли мир?», «Существует ли Бог?», «Что такое истина?», «Что такое хорошо?», «Что есть Человек?», «Что первично — материя или сознание?», «В чём смысл жизни?» и другие.
+                '''),
               ),
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: () {},
-                )
-              ],
-            ),
-            SliverList(
-                delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                final item = items[index];
-                return ListTile(
-                  title: item.buildTitle(context),
-                  subtitle: item.buildSubtitle(context),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SeminarPage()));
-                  },
-                );
-              },
-              childCount: items.length,
-            ))
-          ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                    builder: (context) => const SeminarPage()));
+                },
+                child: Container(
+                  color: const Color.fromARGB(255, 197, 192, 192),
+                  child: Row(
+                    children: [
+                      Image.asset('Kant.jpg',
+                      scale: 10,),
+                      Container(
+                        padding: const EdgeInsets.only(left: 100),
+                        child: Column(
+                          children: const [
+                            Text('Урок 1'),
+                            Text('Иммануил Кант')
+                          ],
+                        ),
+                      )
+                  ],),
+                ),
+              )
+            ]),
+          ),
         ),
       ),
     );
   }
 
+
+
+
+
+// child: CustomScrollView(
+          //   slivers: [
+          //     SliverAppBar(
+          //       centerTitle: true,
+          //       expandedHeight: 400,
+          //       backgroundColor: Colors.white,
+            
+          //       title: Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: const [
+          //           Text('Философия',
+          //           style: TextStyle(
+          //             color: Colors.black,
+          //             fontSize: 50
+          //           ),),
+          //         ],
+          //       ),
+          //       pinned: true,
+          //       flexibleSpace: FlexibleSpaceBar(
+          //         background: Image.asset('schoolOfAthens.webp'),
+          //         stretchModes: const [
+          //           StretchMode.zoomBackground,
+          //           StretchMode.blurBackground
+          //         ],
+          //       ),
+          //     ),
+          //     SliverList(
+          //         delegate: SliverChildBuilderDelegate(
+          //       (BuildContext context, int index) {
+          //         final item = items[index];
+          //         return ListTile(
+          //           title: item.buildTitle(context),
+          //           subtitle: item.buildSubtitle(context),
+          //           onTap: () {
+          //             Navigator.push(
+          //                 context,
+          //                 MaterialPageRoute(
+          //                     builder: (context) => const SeminarPage()));
+          //           },
+          //         );
+          //       },
+          //       childCount: items.length,
+          //     ))
+          //   ],
+          // ),
   /*@override
   Widget build(BuildContext context) {
     return MaterialApp(
