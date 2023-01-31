@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'centered_view/centered_view.dart';
+import 'package:footer/footer_view.dart';
+import 'package:footer/footer.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);
@@ -13,53 +16,93 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('TestSeminar')),
-        body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            QuestionBlock('Иммануил Кант родился в городе:', <Answer>[
-              Answer('Кёнигсберг', true),
-              Answer('Мюнхен', false),
-              Answer('Берлин', false)
-            ]),
-            QuestionBlock('Иммануил Кант родился в:', <Answer>[
-              Answer('1744', false),
-              Answer('1724', true),
-              Answer('1824', false)
-            ]),
-            QuestionBlock('Родоначальник немецкой … философии:', <Answer>[
-              Answer('постоянной', false),
-              Answer('периодической', false),
-              Answer('классической', true)
-            ]),
-            QuestionBlock('Главным философским произведением Канта является:', <Answer>[
-              Answer('«Критика практического разума»', false),
-              Answer('«Критика чистого разума»', true),
-              Answer('«Критика способности суждения»', false)
-            ]),
-            QuestionBlock('Кант не разделял безграничной веры в силы человеческого:', <Answer>[
-              Answer('бытия', false),
-              Answer('разума', true),
-              Answer('существования', false)
-            ]),
-            QuestionBlock('Единство, множество, цельность:', <Answer>[
-              Answer('категории качества', false),
-              Answer('категории модальности', false),
-              Answer('категории количества', true)
-            ]),
-            QuestionBlock('Реальность, отрицание, ограничение:', <Answer>[
-              Answer('категории количества', false),
-              Answer('категории качества', true),
-              Answer('категории отношения', false)
-            ]),
-            QuestionBlock('Субстанция и принадлежность, причина и следствие, взаимодействие:', <Answer>[
-              Answer('категории отношения', true),
-              Answer('категории количества', false),
-              Answer('категории качества', false)
-            ]),
-          ],
-        )
-    ));
+        appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
+        body: FooterView(
+          footer: Footer(
+            child: const Text('Toneyev Anton, 2023'),
+            padding: const EdgeInsets.all(20),
+          ),
+          children: [CenteredView(
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: const QuestionBlock('1. Иммануил Кант родился в городе:', <Answer>[
+                    Answer('Кёнигсберг', true),
+                    Answer('Мюнхен', false),
+                    Answer('Берлин', false)
+                  ]),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: const QuestionBlock('2. Иммануил Кант родился в:', <Answer>[
+                    Answer('1744', false),
+                    Answer('1724', true),
+                    Answer('1824', false)
+                  ]),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: const QuestionBlock('3.Родоначальник немецкой … философии:', <Answer>[
+                    Answer('постоянной', false),
+                    Answer('периодической', false),
+                    Answer('классической', true)
+                  ]),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: const QuestionBlock('4. Главным философским произведением Канта является:', <Answer>[
+                    Answer('«Критика практического разума»', false),
+                    Answer('«Критика чистого разума»', true),
+                    Answer('«Критика способности суждения»', false)
+                  ]),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: const QuestionBlock('5. Кант не разделял безграничной веры в силы человеческого:', <Answer>[
+                    Answer('бытия', false),
+                    Answer('разума', true),
+                    Answer('существования', false)
+                  ]),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: const QuestionBlock('6. Единство, множество, цельность:', <Answer>[
+                    Answer('категории качества', false),
+                    Answer('категории модальности', false),
+                    Answer('категории количества', true)
+                  ]),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: const QuestionBlock('7. Реальность, отрицание, ограничение:', <Answer>[
+                    Answer('категории количества', false),
+                    Answer('категории качества', true),
+                    Answer('категории отношения', false)
+                  ]),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: const QuestionBlock('8. Субстанция и принадлежность, причина и следствие, взаимодействие:', <Answer>[
+                    Answer('категории отношения', true),
+                    Answer('категории количества', false),
+                    Answer('категории качества', false)
+                  ]),
+                ),
+              ],
+            ),
+          ),
+        ]));
   }
 
 }
@@ -85,7 +128,7 @@ class _QuestionBlockState extends State<QuestionBlock> {
     return Column(
       children: [
         Container(
-          color: Colors.blueGrey,
+          //color: Colors.blueGrey,
           alignment: Alignment.topLeft,
           padding: EdgeInsets.all(10),
           child: Text(
@@ -116,7 +159,7 @@ class _AnswerState extends State<Answer>{
 
   late String text = widget.text;
   late bool isCorrect = widget.isCorrect;
-  Color _tileColor = Colors.lightBlueAccent;
+  Color _tileColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
