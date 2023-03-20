@@ -58,7 +58,7 @@ class MyHome extends StatelessWidget {
                 ),
                 child: Column(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('Icon-192.png',
+                    Image.asset('assets/Icon-192.png',
                       height: 50,
                       width: 50,
                     ),
@@ -95,7 +95,7 @@ class MyHome extends StatelessWidget {
                   style: TextStyle(fontSize: 50),
                   ),
                 ),
-              Image.asset('schoolOfAthens.webp'),
+              Image.asset('assets/schoolOfAthens.webp'),
               Container(
                 padding: const EdgeInsets.only(top: 30),
                 child: const Text('''             Филосо́фия (др.-греч. φιλοσοφία, дословно — «любомудрие; любовь к мудрости») — особая форма познания и система знаний об общих характеристиках, понятиях и принципах реальности (бытия), а также бытия человека, об отношении человека и окружающего его мира.
